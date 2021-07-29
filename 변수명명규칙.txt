@@ -1,0 +1,29 @@
+협업 변수명명 규칙
+
+변수 시작명
+1. 첫단어 -> this_
+2. 띄어쓰기 = 언더바(_)
+3. 전체 소문자
+4. this_사용위치_동사_명사
+-> 애매할경우 조율
+5. 특정단어는 길 경우 조율해서 줄여서 사용 (모든 곳에서 동일하게 줄여서 사용)
+
+Ex) 
+    this_login_set_id
+    this_main_search_food
+
+
+함수 && 클래스 명 작성 규칙
+1. 첫단어 Func_ 
+2. 띄어쓰기 = 언더바(_)
+3. Func_사용위치_동사_명사
+-> 애매할경우 조율
+4. 첫글자이후 소문자로
+5. 사용위치 조율해서 줄여서 사용
+
+Ex) Func_register_set_account
+    Func_login_get_account
+    Func_main_search_igd
+    Func_rfg_set_Igd
+        (rfg -> 냉장고)
+    
