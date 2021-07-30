@@ -1,23 +1,23 @@
 "use strict";
-const bcrypt = require("bcrypt");
+
 const Token = require("./token/Token");
-const UserStorage = require("./UserStorage");
+const UserStorage = require("./UserSql");
 
 class User {
     constructor(body) {
-        this.body = body;
+        this.body = body; // 프론트에서 받아온 req 값을 user.body에 저장함.
     }
 
     // DB에 접속하여 body.id를 키값으로 유저정보 불러옴. 
     async login() {
-        const client = this.body;
-        console.log('아이디 , 비밀번호 '+this.body.id)
+        const client = this.body; //body에 
+        console.log('아이디 , 비밀번호 ' + this.body.id)
         try {
             const user = await UserStorage.getUserInfo(client.id);
             if (user) {
-                console.log('client : ',client.id ===user.ID)
+                console.log('client : ', client.id === user.ID)
                 //let this_check_info = await bcrypt.compare(client.psword, user.psword);
-                if (user.ID === client.id ) {
+                if (user.ID === client.id) {
                     return { success: true, token: Token.CreateToken(user.ID, user.Name) };
                 }
                 return { success: false, msg: "비밀번호가 틀렸습니다." };
@@ -37,6 +37,16 @@ class User {
             return response;
         } catch (err) {
             return { success: false, err };
+        }
+    }
+
+    async gettable(){
+        const client = this.body
+        try{
+            const response = await UserStorage.get(client);
+            return response;
+        } catch (err){
+            console.log(err);
         }
     }
 }

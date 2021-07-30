@@ -1,21 +1,21 @@
 const jwt = require('jsonwebtoken');//로그인토큰
-const bcrypt = require("bcrypt");
-require("dotenv").config();
+const bcrypt = require("bcrypt"); //패스워드 해쉬 암호화
+require("dotenv").config(); //jwt 시크릿 key 랑 합쳐서 만들어짐
 
-//토큰생성
-const CreateToken = (id, nickname) => {
-  return jwt.sign({ id, nickname }, process.env.ACCESS_TOKEN_SECRET, {
+//토큰생성 함수
+const CreateToken = (id, nickname) => { //토큰안에 아이디 , 닉네임 정보를 넣기위해서 인자를 받아옴
+  return jwt.sign({ id, nickname }, process.env.ACCESS_TOKEN_SECRET, { //ACCESS_TOKEN_SECRET 키를 이용하여 jwt를 만들어서 리턴을 해줌
     expiresIn: "10m", // 토큰 유효시간 10분임
   });
 };
 
 //토큰 유효성 검사
-const CheckToken = (token) => {
+const CheckToken = (token) => { //유효성 검사를 하기 위해서 토큰을 받아옴
   try {
-    // 요청 헤더에 저장된 토큰(req.headers.authorization)과 비밀키를 사용하여 토큰 반환
+    // 받아온 토큰과 비밀키를 사용하여 토큰 반환
     return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
   }
-  // 인증 실패
+  // 인증 실패시
   catch (error) {
     console.log(error.name);
     // 유효기간이 초과된 경우
