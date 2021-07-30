@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 
-router.post("/login", index_ctrl_router.index_supervise_user.login);
+router.post("/login",index_ctrl_router.index_supervise_user.login);
 router.post("/register", index_ctrl_router.index_supervise_user.register);
 
 module.exports = router;

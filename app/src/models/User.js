@@ -1,22 +1,24 @@
 "use strict";
 const bcrypt = require("bcrypt");
 const Token = require("./token/Token");
+const UserStorage = require("./UserStorage");
 
 class User {
     constructor(body) {
         this.body = body;
     }
 
-
     // DB에 접속하여 body.id를 키값으로 유저정보 불러옴. 
     async login() {
         const client = this.body;
+        console.log('아이디 , 비밀번호 '+this.body.id)
         try {
             const user = await UserStorage.getUserInfo(client.id);
             if (user) {
-                let this_check_info = await bcrypt.compare(client.psword, user.psword);
-                if (user.id === client.id && this_check_info) {
-                    return { success: true, token: Token.CreateToken(id, nickname) };
+                console.log('client : ',client.id ===user.ID)
+                //let this_check_info = await bcrypt.compare(client.psword, user.psword);
+                if (user.ID === client.id ) {
+                    return { success: true, token: Token.CreateToken(user.ID, user.Name) };
                 }
                 return { success: false, msg: "비밀번호가 틀렸습니다." };
             }
@@ -38,6 +40,8 @@ class User {
         }
     }
 }
+
+module.exports = User;
 
 
 // 토큰안에 정보가 id , 닉네임 , 유효기간 
