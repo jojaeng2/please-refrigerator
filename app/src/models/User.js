@@ -1,7 +1,7 @@
 "use strict";
 
 const Token = require("./token/Token");
-const UserStorage = require("./UserSql");
+const UserSql = require("./UserSql");
 
 class User {
     constructor(body) {
@@ -13,7 +13,7 @@ class User {
         const client = this.body; //body에 
         console.log('아이디 , 비밀번호 ' + this.body.id)
         try {
-            const user = await UserStorage.getUserInfo(client.id);
+            const user = await UserSql.getUserInfo(client.id);
             if (user) {
                 console.log('client : ', client.id === user.ID)
                 //let this_check_info = await bcrypt.compare(client.psword, user.psword);
@@ -33,17 +33,37 @@ class User {
     async register() {
         const client = this.body;
         try {
-            const response = await UserStorage.save(client);
+            const response = await UserSql.save(client);
             return response;
         } catch (err) {
-            return { success: false, err };
+            return { success: false, msg: "이미 존재하는 아이디입니다." };
         }
     }
 
     async gettable(){
         const client = this.body
         try{
-            const response = await UserStorage.get(client);
+            const response = await UserSql.get(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async Squery() {
+        const client = this.body;
+        try{
+            const response = await UserSql.selectRFG(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async DIquery() {
+        const client = this.body;
+        try{
+            const response = await UserSql.deleteRFG(client);
             return response;
         } catch (err){
             console.log(err);
