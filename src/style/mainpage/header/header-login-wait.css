@@ -1,0 +1,48 @@
+.login-wait-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+} 
+
+.login-wait-id, .login-wait-psword{
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #dee1e9;
+  width: 100%;
+  height: 20px;
+  border: 0;
+  padding: 15px;
+  margin-right: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 7px;
+}
+
+.login-wait-id:focus, .login-wait-psword:focus{
+  background: #fff;
+  box-shadow: 0;
+  border: 2px solid #47494a;
+  color: #3498db;
+  outline: none;
+  /*padding: 13px 13px 13px 54px;*/
+}
+
+.login-wait-btn{
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    height: 30px;
+    border: 0;
+    font-size: 14px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.login-wait-btn:hover {
+  transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+
+}
