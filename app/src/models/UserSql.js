@@ -17,7 +17,7 @@ class UserSql {
         });
     }
 
-    static async save(userInfo) {
+    static async save(userInfo) { //req = userinfo req.body.id = asd
         return new Promise(async (resolve, reject) => {
             const hashing = await bcrypt.hash(userInfo.psword, saltRounds);
             const query = "INSERT INTO User(ID, Name, Psword) VALUES(?, ?, ?);";
@@ -32,8 +32,17 @@ class UserSql {
         return new Promise((resolve, reject) => {
             const query = "SELECT * FROM FoodMain";
             db.query(query, (err, data) => {
-                //console.log('data : ',data)
                 if (err) reject(`${err}`)
+                resolve(data);
+            });
+        });
+    }
+
+    static async getrecipe(name) {
+        return new Promise((resolve, reject) => {
+            const query = "SELECT * FROM FoodMain,FoodIgd,Recipe WHERE FoodIgd.FoodId = Recipe.FoodId and FoodIgd.FoodId=FoodMain.FoodId and FoodMain.FoodId=(?)"
+            db.query(query,[name], (err, data) => {
+                if (err) reject(`${err}`);
                 resolve(data);
             });
         });

@@ -1,6 +1,8 @@
 "use strict";
 
-const User = require("../../models/User");
+const User = require("../../models/User"),
+    url = require('url'),
+    bodyParser = require("body-parser");
 
 // login, register 함수를 index_supervise_user에 넣음
 // User class이용해서 return 값으로 {success : true} 를 받을경우 로그인 성공
@@ -19,7 +21,11 @@ const index_supervise_user = {
     test_table : async (req,res)=>{
         const table = new User(req.body);
         const req_table = await table.gettable();
-        console.log((req_table));
+        return res.json(req_table);
+    },
+    get_recipe : async (req,res)=>{
+        const recipe = new User(req.params.id);
+        const req_table = await recipe.getrecipe();
         return res.json(req_table);
     },
     get_RFG : async (req, res) => {

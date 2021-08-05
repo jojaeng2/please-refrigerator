@@ -4,8 +4,8 @@ const Token = require("./token/Token");
 const UserSql = require("./UserSql");
 
 class User {
-    constructor(body) {
-        this.body = body; // 프론트에서 받아온 req 값을 user.body에 저장함.
+    constructor(url) {
+        this.body = url; // 프론트에서 받아온 req 값을 user.body에 저장함.
     }
 
     // DB에 접속하여 body.id를 키값으로 유저정보 불러옴. 
@@ -44,6 +44,16 @@ class User {
         const client = this.body
         try{
             const response = await UserSql.get(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async getrecipe(){
+        const client = this.body
+        try{
+            const response = await UserSql.getrecipe(client);
             return response;
         } catch (err){
             console.log(err);

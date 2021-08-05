@@ -1,8 +1,13 @@
 "use strict";
 
 const express = require("express"),
-    index_ctrl_router = require("./router.ctrl");
+    index_ctrl_router = require("./router.ctrl"),
+    url = require("url"),
+    bodyParser = require("body-parser");
 
+const app = express();
+// URL을 통해 전달되는 데이터에 한글, 공백 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
+app.use(bodyParser.urlencoded({ extended: false}));
 
 const router = express.Router();
 
@@ -11,6 +16,8 @@ router.post("/login", index_ctrl_router.index_supervise_user.login);
 router.post("/register", index_ctrl_router.index_supervise_user.register);
 
 router.post("/gettable", index_ctrl_router.index_supervise_user.test_table);
+
+router.post("/getrcp/:id", index_ctrl_router.index_supervise_user.get_recipe);
 
 router.post("/getrfg", index_ctrl_router.index_supervise_user.get_RFG);
 
