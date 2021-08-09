@@ -1,49 +1,46 @@
-import React from 'react';
-import '../../style/mainpage/footer/footer.css';
+import React from 'react'
+import '../../style/mainpage/footer/footer.css'
 
 
-function footer({ showtable }) {
-    console.log(showtable)
+function footer({ ftable, history }) {
+  // console.log(showtable)
 
-    const Show = () => {
-        let count = 0
-        const arr = []
-
-        showtable && showtable.map((v) => count < 8 ? (count += 1, arr.push(<Showimg key={v.FoodN} img={v.FoodV} t={v.FoodT} c={v.FoodC}name={v.FoodN}></Showimg>)) : 0)
-        return (
-            <div>
-                {arr}
-            </div>
-        )
-    }
-
-    const Showimg = ({ img, name,t,c }) => {
-        console.log(c)
-        return (
-            <div className="footer_block">
+  const Show = () => {
+    return (
+      <div>
+        {ftable && ftable.slice(0, 8).map(({ FoodId, FoodV, FoodN, FoodT, FoodC }) => {
+         return (
+            <>
+              <div className="footer_block" onClick={() => history.push("/recipe/" + FoodId)}>
                 <div className="footer_food">
-                    <img className="footer_food_img" src={img} width='130' height='130' />
+                  <img className="footer_food_img" src={FoodV} />
                 </div>
 
                 <div className="footer_text">
-                    <p className="footer_text_style"> {name} </p>
-                    <p className="footer_text_style">  {c && c.includes('.') ? c.includes('kcal') ? c : c+'l' : ''} <br/></p>
-                    <p className="footer_text_style"> {t} </p>
+                  <p className="footer_text_style1"> {FoodN} </p>
+                  <p className="footer_text_style2">
+                    {' '}
+                    {FoodC && FoodC.includes('.') ? (FoodC.includes('kcal') ? FoodC : FoodC + 'l') : ''}{' '}
+                    <br />
+                  </p>
+                  <p className="footer_text_style3"> {FoodT} </p>
                 </div>
-            </div>
-        )
-
-    }
-
-    return (
-        <>
-            <div className="food_big_block">
-                    <Show/>
-                    {/*  footer_block 하나가 음식 박스 한개  */}
-            
-            </div>
-        </>
+                  </div>
+            </>
+          )
+        })}
+      </div>
     )
+  }
+
+  return (
+    <>
+      <div className="food_big_block">
+        <Show />
+        {/*  footer_block 하나가 음식 박스 한개  */}
+      </div>
+    </>
+  )
 }
 
-export default footer;
+export default footer

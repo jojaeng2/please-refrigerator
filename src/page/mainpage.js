@@ -6,47 +6,47 @@ import Aside from '../components/mainpage/aside';
 import Axios from 'axios';
 
 
+// import img1 from '../page/img/num1.jpeg'
+// import img2 from '../page/img/num2.jpeg'
+// import img3 from '../page/img/num3.jpeg'
+// import img4 from '../page/img/num4.jpeg'
+// import img5 from '../page/img/num5.jpeg'
+
+
 const App = ({ history }) => {
     // 히스토리를 받았어 (프롭스로)
     const [table, settable] = useState();
     const [text, settext] = useState('');
     const [ftable,setftable] = useState();
 
-    useEffect(() => {
-        GetTable()
-    }, [])
-
-    const GetTable = () => {
-        console.log('눌렀습니다.')
-        Axios.post("https://qkrtmfqls.gabia.io/gettable", {
-        })
-            .then((response) => {
-                settable(response.data)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
-
-    useEffect(() => {
-        let count = 0
+    const gettable = () => {
         if (text != '') {
-            const arr = []
-            table && table.map((v)=> v.FoodN.includes(text) ? arr.push(v) : 0)
-            // table && table.map((v) => v.FoodN.includes(text) ? (count += 1, count < 9 && count > 0 ? console.log(v.FoodN) : 0) : 0)
-            setftable(arr)
-            // console.log(arr)
+            Axios.post("http://qkrtmfqls.gabia.io/gettable", {
+                id: text
+            })
+                .then((response) => {
+                    setftable(response.data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
-    }, [text])
-
+    }
 
     return (
         <>
             <div className="body-form">
-                <Body settext={settext} text={text} history={history} />
+                <Body gettable={gettable} settext={settext} text={text} history={history} />
+                {/* <div>
+                <img className="profile-img">{img1}</img>
+                <img className="profile-img">{img2}</img>
+                <img className="profile-img">{img3}</img>
+                <img className="profile-img">{img4}</img>
+                <img className="profile-img">{img5}</img>
+                </div> */}
             </div>
             <div className="footer-form">
-                <Footer showtable={ftable} />
+                <Footer ftable={ftable} history={history} />
             </div>
             <div className="aside-form">
                 <Aside />

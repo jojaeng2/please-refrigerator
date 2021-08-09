@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.notice-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.subcontent-form {
+    display: flex;
+}
+
+.notice-nav-form {
+    width: 15%;
+    height: 800px;
+
+    display: flex;
+    /* position: relative; 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
+    background: white;
+    background-repeat: repeat-y;
+    /* border-radius: 16px; */
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
+
+    /* 페이지 중앙에 나타나도록 설정 */
+    /* margin: 0 auto;  */
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.maincontent-form {
+    width: 80%;
+    height: 800px;
+
+    display: flex;
+    /* position: relative; 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
+    background: white;
+    background-repeat: repeat-y;
+    /* border-radius: 16px; */
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
+
+    /* 페이지 중앙에 나타나도록 설정 */
+    margin: 0 auto; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notice-box {
+    width: 90%;
+}
+
+.notice-head {
+    width: 100%;
+    height: 50px;
+    /* padding-top: 48px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 24px; */
+    border-bottom: 1px solid #535558;
+}
+
+.notice_img_box {
+    position:relative;
+}
+
+.community {
+    position:absolute;
+    left: 37%; 
+    transform:translateX(-50%);
+    font-size: 33px;
+    top: 50%;
+    transform:translateY(-50%);
+    font-family: 'Lobster', cursive;
+}
+
+.notice-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.noticeboard-select-btn {
+    background-color: rgb(221, 218, 215);
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+    cursor: pointer;
+}
+
+.freeboard-select-btn {
+    background-color: rgb(221, 218, 215);
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+    cursor: pointer;
+}  
+
+.selectedboard-btn {
+    background-color: rgb(74, 73, 88);
+    color: white;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.each_content {
+    display: flex;
+
+    height: 70px;
+
+    border-bottom: 1px solid #babcbf;
+    align-items: center;
+}
+
+.notice_no {
+    width: 10%;
+    text-align: center;
+}
+
+.notice_title_a {
+    width: 70%;
+    text-align: center;
+}
+
+.notice_title {
+    width: 70%;
+}
+
+.notice_title a {
+    text-decoration: none;
+    color: black;
+}
+
+.notice_title a:hover { 
+    text-decoration: underline; 
+}
+
+
+.notice_day {
+    width: 20%;
+    text-align: center;
+}   
+

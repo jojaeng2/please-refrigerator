@@ -1,0 +1,135 @@
+.recipe-body-form {
+    width: 100vw;
+    height: 80vh;
+    background-color: #D8E0E9;
+    display: flex;
+    justify-content: center;
+
+}
+.recipe-thumbnail-form {
+    margin-top: 10%;
+    width: 70%;
+    height: 70%;
+    background-color: #ecf0f1;
+    display: flex;
+}
+
+.recipe-title-form {
+    width: 50%;
+    height: 100%;
+    display: block;
+}
+
+.recipe-title-content {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #404552;
+    border-bottom: rgba(1, 1, 1, 0.2) 1px solid;
+}
+
+.recipe-thumbnail-content-form {
+    width: 100%;
+    height: 80%;
+    background-color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-thumbnail-text-form {
+    width: 90%;
+    height: 90%;
+    background-color: #ecf0f1;
+    display: block;
+}
+
+.recipe-thumbnail-img-form {
+    width: 45%;
+    height: 100%;
+    background-color: #ecf0f1;
+    position: relative;
+}
+
+.recipe-thumbnail-img-upbox {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-thumbnail-img-upbox img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+}
+
+.recipe-thumbnail-blank {
+    width: 5%;
+    background-color: #ecf0f1;
+}
+
+.recipe-thumbnail-graph {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.recipe-thumbnail-graph-kcal {
+    width: 50%;
+    height: 100%;
+}
+.recipe-thumbnail-graph-time {
+    width: 50%;
+    height: 100%;    
+}
+
+.recipe-thumbnail-graph-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 3%;
+}
+
+.recipe-thumbnail-idg-form {
+    width: 100%;
+    height: 50%;
+    overflow: scroll;
+}
+
+.recipe-thumbnail-idg-li-even {
+    font-size: 1.1rem;
+    font-weight: 350;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0% 5%;
+    color: white;
+    padding: 1% 5%;
+    background-color: #404552;
+    opacity: 0.6;
+}
+
+.recipe-thumbnail-idg-li-odd {
+    font-size: 1.1rem;
+    font-weight: 350;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0% 5%;
+    opacity: 0.8;
+    color: white;
+    padding: 1% 5%;
+    background-color: #404552;
+    opacity: 0.7;
+}
