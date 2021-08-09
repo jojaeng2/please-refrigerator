@@ -4,8 +4,8 @@ require("dotenv").config(); //jwt 시크릿 key 랑 합쳐서 만들어짐
 
 //토큰생성 함수
 const CreateToken = (id, nickname) => { //토큰안에 아이디 , 닉네임 정보를 넣기위해서 인자를 받아옴
-  return jwt.sign({ id, nickname }, process.env.ACCESS_TOKEN_SECRET, { //ACCESS_TOKEN_SECRET 키를 이용하여 jwt를 만들어서 리턴을 해줌
-    expiresIn: "10m", // 토큰 유효시간 10분임
+  return jwt.sign({ id, nickname }, 'lllllogincheecckkk', { //ACCESS_TOKEN_SECRET 키를 이용하여 jwt를 만들어서 리턴을 해줌
+    expiresIn: "60m", // 토큰 유효시간 10분임
   });
 };
 
@@ -13,7 +13,7 @@ const CreateToken = (id, nickname) => { //토큰안에 아이디 , 닉네임 정
 const CheckToken = (token) => { //유효성 검사를 하기 위해서 토큰을 받아옴
   try {
     // 받아온 토큰과 비밀키를 사용하여 토큰 반환
-    return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    return { token : jwt.verify(token,'lllllogincheecckkk'),success:true};
   }
   // 인증 실패시
   catch (error) {

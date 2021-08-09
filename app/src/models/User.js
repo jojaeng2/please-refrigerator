@@ -11,14 +11,12 @@ class User {
     // DB에 접속하여 body.id를 키값으로 유저정보 불러옴. 
     async login() {
         const client = this.body; //body에 
-        console.log('아이디 , 비밀번호 ' + this.body.id)
         try {
             const user = await UserSql.getUserInfo(client.id);
             if (user) {
-                console.log('client : ', client.id === user.ID)
                 //let this_check_info = await bcrypt.compare(client.psword, user.psword);
                 if (user.ID === client.id) {
-                    return { success: true, token: Token.CreateToken(user.ID, user.Name) };
+                    return { nickname : user.Name,id : user.ID, success: true, token: Token.CreateToken(user.ID, user.Name), };
                 }
                 return { success: false, msg: "비밀번호가 틀렸습니다." };
             }
@@ -28,14 +26,27 @@ class User {
         }
     }
 
+    async token_check() {
+        const client = this.body; //body에 
+        try {
+            return{
+                token : Token.CheckToken(client.token)
+            }
+        } catch (err) {
+            return { success: false, err };
+        }
+    }
+
 
     // DB에 접속하는 save 함수 사용
     async register() {
         const client = this.body;
+        console.log(client)
         try {
             const response = await UserSql.save(client);
             return response;
         } catch (err) {
+            console.log(err)
             return { success: false, msg: "이미 존재하는 아이디입니다." };
         }
     }
@@ -50,10 +61,101 @@ class User {
         }
     }
 
+    async getrank(){
+        const client = this.body
+        try{
+            const response = await UserSql.getrank(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async getigd(){
+        const client = this.body
+        try{
+            const response = await UserSql.getigd(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
     async getrecipe(){
         const client = this.body
         try{
             const response = await UserSql.getrecipe(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async noticeid() {
+        const client = this.body;
+        try{
+            const response = await UserSql.noticeid(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async freeid() {
+        const client = this.body;
+        try{
+            const response = await UserSql.freeid(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async getfree() {
+        const client = this.body;
+        try{
+            const response = await UserSql.getfree(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async getnotice() {
+        const client = this.body;
+        try{
+            const response = await UserSql.getnotice(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async addfree() {
+        const client = this.body;
+        console.log("client", client);
+        try{
+            const response = await UserSql.addfree(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async get_idgrc() {
+        const client = this.body;
+        console.log("client", client);
+        try{
+            const response = await UserSql.get_idgrc(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+    async addnotice() {
+        const client = this.body;
+        try{
+            const response = await UserSql.addnotice(client);
             return response;
         } catch (err){
             console.log(err);
@@ -74,6 +176,16 @@ class User {
         const client = this.body;
         try{
             const response = await UserSql.deleteRFG(client);
+            return response;
+        } catch (err){
+            console.log(err);
+        }
+    }
+
+    async deletefree() {
+        const client = this.body;
+        try{
+            const response = await UserSql.deletefree(client);
             return response;
         } catch (err){
             console.log(err);
