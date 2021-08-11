@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // 라우팅 파일 불러오기
-const routing = require("./src/routes/home/router");
+const routing = require("./src/routes/router");
 
 
 
